@@ -6,6 +6,7 @@ from imago.views import (JurisdictionList,
                          BillList,
                          OrganizationList,
                          DivisionList,
+                         DisclosureList,
 
                          JurisdictionDetail,
                          PersonDetail,
@@ -13,8 +14,9 @@ from imago.views import (JurisdictionList,
                          VoteDetail,
                          BillDetail,
                          OrganizationDetail,
-                         DivisionDetail
-                        )
+                         DivisionDetail,
+                         DisclosureDetail
+                         )
 
 urlpatterns = patterns(
     '',
@@ -25,6 +27,7 @@ urlpatterns = patterns(
     url(r'^organizations/$', OrganizationList.as_view()),
     url(r'^bills/$', BillList.as_view()),
     url(r'^divisions/$', DivisionList.as_view()),
+    url(r'^disclosures/$', DisclosureList.as_view()),
 
     # detail views
     url(r'^(?P<pk>ocd-jurisdiction/.+)/$', JurisdictionDetail.as_view()),
@@ -34,4 +37,5 @@ urlpatterns = patterns(
     url(r'^(?P<pk>ocd-organization/.+)/$', OrganizationDetail.as_view()),
     url(r'^(?P<pk>ocd-bill/.+)/$', BillDetail.as_view()),
     url(r'^(?P<pk>ocd-division/.+)/$', DivisionDetail.as_view()),
+    url(r'^(?P<pk>ocd-disclosure/.+)/$', DisclosureDetail.as_view()),
 )

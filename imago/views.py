@@ -10,7 +10,7 @@ from opencivicdata.models import (Jurisdiction,
                                   VoteEvent,
                                   Event,
                                   Division
-                                 )
+                                  )
 
 from .helpers import (PublicListEndpoint,
                       PublicDetailEndpoint,
@@ -23,7 +23,7 @@ from .serialize import (JURISDICTION_SERIALIZE,
                         BILL_SERIALIZE,
                         EVENT_SERIALIZE,
                         DIVISION_SERIALIZE
-                       )
+                        )
 from restless.http import HttpError
 
 """
@@ -62,7 +62,7 @@ class OrganizationList(PublicListEndpoint):
     serialize_config = ORGANIZATION_SERIALIZE
     default_fields = ['id', 'name', 'image', 'classification',
                       'jurisdiction.id', 'parent.id', 'parent.name',
-                     ]
+                      ]
 
 
 class OrganizationDetail(PublicDetailEndpoint):
@@ -95,7 +95,6 @@ class OrganizationDetail(PublicDetailEndpoint):
         'posts.label',
         'posts.role',
     ]
-
 
 
 class PeopleList(PublicListEndpoint):

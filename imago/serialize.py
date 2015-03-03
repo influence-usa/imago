@@ -45,7 +45,7 @@ def sfilter(obj, blacklist):
 
 
 DIVISION_SERIALIZE = dict([("id", {}), ("name", {})])
-SOURCES_SERIALIZE = {"note": {}, "url": {},}
+SOURCES_SERIALIZE = {"note": {}, "url": {}, }
 
 JURISDICTION_SERIALIZE = dict([
     ("id", {}),
@@ -351,6 +351,7 @@ EVENT_SERIALIZE = dict([
     ("sources", SOURCES_SERIALIZE),
 ])
 
+
 def boundary_to_dict(boundary):
     d = boundary.as_dict()
     d['boundary_set'] = {'start_date': boundary.set.start_date,
@@ -365,7 +366,27 @@ DIVISION_SERIALIZE = {
     'country': {},
     'jurisdictions': JURISDICTION_SERIALIZE,
     'children': lambda division: [{'id': d.id, 'name': d.name}
-                                   for d in Division.objects.children_of(division.id)],
+                                  for d in
+                                  Division.objects.children_of(division.id)],
     'geometries': lambda division: [boundary_to_dict(dg.boundary)
                                     for dg in division.geometries.all()]
 }
+
+DISCLOSURE_SERIALIZE = dict([
+    ('id', {}),
+    ('jurisdiction', JURISDICTION_EMBED),
+    ('jurisdiction_id', {}),
+    ('classification', {}),
+    ('disclosed_events', EVENT_SERIALIZE),
+    ('documents', {"note": {}, "date": {}, "links": LINK_BASE}),
+
+    ('created_at', {}),
+    ('updated_at', {}),
+
+    ('submitted_date', lambda x: dout(x.start_time)),
+    ('effective_date', lambda x: dout(x.end_time)),
+    ('timezone', {}),
+
+    ('extras', lambda x: x.extras),
+    ("sources", SOURCES_SERIALIZE),
+])
