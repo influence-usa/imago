@@ -9,7 +9,8 @@ from opencivicdata.models import (Jurisdiction,
                                   Bill,
                                   VoteEvent,
                                   Event,
-                                  Division
+                                  Division,
+                                  Disclosure
                                   )
 
 from .helpers import (PublicListEndpoint,
@@ -22,7 +23,8 @@ from .serialize import (JURISDICTION_SERIALIZE,
                         VOTE_SERIALIZE,
                         BILL_SERIALIZE,
                         EVENT_SERIALIZE,
-                        DIVISION_SERIALIZE
+                        DIVISION_SERIALIZE,
+                        DISCLOSURE_SERIALIZE
                         )
 from restless.http import HttpError
 
@@ -285,3 +287,19 @@ class DivisionDetail(PublicDetailEndpoint):
     model = Division
     serialize_config = DIVISION_SERIALIZE
     default_fields = ['id', 'name', 'country', 'jurisdictions', 'children', 'geometries']
+
+
+class DisclosureList(PublicListEndpoint):
+    model = Disclosure
+    serialize_config = DISCLOSURE_SERIALIZE
+    default_fields = [
+        'id', 'jurisdiction', 'classification', 'submitted_date',
+        'effective_date', 'timezone', 'sources', 'created_at', 'updated_at',
+        'related_entities'
+    ]
+
+
+class DisclosureDetail(PublicDetailEndpoint):
+    model = Event
+    serialize_config = EVENT_SERIALIZE
+    default_fields = get_field_list(model)

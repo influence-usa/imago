@@ -377,7 +377,6 @@ DISCLOSURE_SERIALIZE = dict([
     ('jurisdiction', JURISDICTION_EMBED),
     ('jurisdiction_id', {}),
     ('classification', {}),
-    ('disclosed_events', EVENT_SERIALIZE),
     ('documents', {"note": {}, "date": {}, "links": LINK_BASE}),
 
     ('created_at', {}),
@@ -386,6 +385,11 @@ DISCLOSURE_SERIALIZE = dict([
     ('submitted_date', lambda x: dout(x.start_time)),
     ('effective_date', lambda x: dout(x.end_time)),
     ('timezone', {}),
+
+    ('related_entities', {"note": {}, "entity_name": {}, "entity_type": {},
+                          "entity_id": {}}),
+
+    ('disclosed_events', EVENT_SERIALIZE),
 
     ('extras', lambda x: x.extras),
     ("sources", SOURCES_SERIALIZE),
