@@ -300,6 +300,6 @@ class DisclosureList(PublicListEndpoint):
 
 
 class DisclosureDetail(PublicDetailEndpoint):
-    model = Event
-    serialize_config = EVENT_SERIALIZE
+    model = Disclosure
+    serialize_config = DISCLOSURE_SERIALIZE
     default_fields = get_field_list(model)

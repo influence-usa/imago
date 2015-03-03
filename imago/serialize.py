@@ -382,14 +382,12 @@ DISCLOSURE_SERIALIZE = dict([
     ('created_at', {}),
     ('updated_at', {}),
 
-    ('submitted_date', lambda x: dout(x.start_time)),
-    ('effective_date', lambda x: dout(x.end_time)),
+    ('submitted_date', lambda x: dout(x.submitted_date)),
+    ('effective_date', lambda x: dout(x.effective_date)),
     ('timezone', {}),
 
-    ('related_entities', {"note": {}, "entity_name": {}, "entity_type": {},
+    ('related_entities', {"note": {}, "classification": {}, "entity_name": {}, "entity_type": {},
                           "entity_id": {}}),
-
-    ('disclosed_events', EVENT_SERIALIZE),
 
     ('extras', lambda x: x.extras),
     ("sources", SOURCES_SERIALIZE),
