@@ -74,7 +74,7 @@ class OrganizationDetail(PublicDetailEndpoint):
         'memberships_on_behalf_of', 'billactionrelatedentity',
         'eventrelatedentity', 'eventparticipant', 'jurisdiction_id',
         'billsponsorship', 'memberships', 'parent_id', 'children', 'actions',
-        'parent', 'posts', 'bills', 'votes',
+        'parent', 'posts', 'bills', 'votes', 'disclosurerelatedentity',
     ]) + [
         'parent.id',
         'parent.name',
@@ -135,6 +135,7 @@ class PersonDetail(PublicDetailEndpoint):
         'eventparticipant',
         'billsponsorship',
         'eventrelatedentity',
+        'disclosurerelatedentity',
         'memberships',
     ]) + [
         'memberships.label',
@@ -225,6 +226,7 @@ class BillDetail(PublicDetailEndpoint):
         'legislative_session_id',
         'actions.organization',
         'votes'
+        'disclosurerelatedentity',
     ]) + [
         'from_organization.id',
         'from_organization.name',
@@ -264,7 +266,7 @@ class EventDetail(PublicDetailEndpoint):
     model = Event
     serialize_config = EVENT_SERIALIZE
     default_fields = get_field_list(model, without=[
-        'location_id',
+        'location_id', 'disclosurerelatedentity'
     ])
 
 
