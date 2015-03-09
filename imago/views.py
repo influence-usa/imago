@@ -75,6 +75,7 @@ class OrganizationDetail(PublicDetailEndpoint):
         'eventrelatedentity', 'eventparticipant', 'jurisdiction_id',
         'billsponsorship', 'memberships', 'parent_id', 'children', 'actions',
         'parent', 'posts', 'bills', 'votes', 'disclosurerelatedentity',
+        'source_identified'
     ]) + [
         'parent.id',
         'parent.name',
@@ -137,6 +138,7 @@ class PersonDetail(PublicDetailEndpoint):
         'eventrelatedentity',
         'disclosurerelatedentity',
         'memberships',
+        'source_identified'
     ]) + [
         'memberships.label',
         'memberships.role',
