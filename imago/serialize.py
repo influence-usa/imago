@@ -374,6 +374,8 @@ DIVISION_SERIALIZE = {
 
 DISCLOSURE_SERIALIZE = dict([
     ('id', {}),
+    ('name', {}),
+    ('description', {}),
     ('jurisdiction', JURISDICTION_EMBED),
     ('jurisdiction_id', {}),
     ('classification', {}),
@@ -391,4 +393,5 @@ DISCLOSURE_SERIALIZE = dict([
 
     ('extras', lambda x: x.extras),
     ("sources", SOURCES_SERIALIZE),
+    ("identifiers", IDENTIFIERS_SERIALIZE),
 ])

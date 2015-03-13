@@ -306,4 +306,4 @@ class DisclosureList(PublicListEndpoint):
 class DisclosureDetail(PublicDetailEndpoint):
     model = Disclosure
     serialize_config = DISCLOSURE_SERIALIZE
-    default_fields = get_field_list(model)
+    default_fields = get_field_list(model, without=['source_identified', ])
